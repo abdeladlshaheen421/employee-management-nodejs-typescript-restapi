@@ -59,8 +59,8 @@ export const findAll = async (
   next: NextFunction
 ): Promise<Response | void> => {
   try {
-    const departments = await findAllDepartments(req.query);
-    return res.status(200).json({ departments });
+    const result = await findAllDepartments(req.query);
+    return res.status(200).json({ ...result });
   } catch (error) {
     next(error);
   }

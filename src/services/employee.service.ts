@@ -37,14 +37,7 @@ export async function findAllEmployees(
 ): Promise<EmployeesWithCountInterface> {
   const pagination = new Pagination({
     ...query,
-    columns: [
-      "first_name",
-      "last_name",
-      "email",
-      "department",
-      "hire_date",
-      "salary",
-    ],
+    columns: ["first_name", "last_name", "email", "hire_date", "salary"],
   });
   return <EmployeesWithCountInterface>await Employee.findAndCountAll({
     ...pagination.getPreparedQuery(),

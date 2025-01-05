@@ -60,8 +60,8 @@ export const findAll = async (
   next: NextFunction
 ): Promise<Response | void> => {
   try {
-    const employees = await findAllEmployees(req.query);
-    return res.status(200).json({ employees });
+    const result = await findAllEmployees(req.query);
+    return res.status(200).json({ ...result });
   } catch (error) {
     next(error);
   }

@@ -25,7 +25,7 @@ export class Pagination {
   sortType: sortTypeEnum;
   search: string;
   columns: string[];
-
+  where: any;
   constructor({
     limit,
     page,
@@ -48,8 +48,10 @@ export class Pagination {
     query["offset"] = (this.page - 1) * this.limit;
     query["order"] = [[this.sortBy, this.sortType]];
     if (this.search && this.columns.length) {
+      query["where"] = {};
+      query["where"][Op.or] = {};
       for (const columnName of this.columns) {
-        query["where"][columnName] = {
+        query["where"][Op.or][columnName] = {
           [Op.like]: `%${this.search}%`,
         };
       }
