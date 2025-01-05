@@ -48,6 +48,7 @@ export async function findAllEmployees(
   });
   return <EmployeesWithCountInterface>await Employee.findAndCountAll({
     ...pagination.getPreparedQuery(),
+    include: [{ association: "department" }],
   });
 }
 

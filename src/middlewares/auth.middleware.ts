@@ -11,7 +11,7 @@ export const authMiddleware = (requiredRoles?: roleTypeEnum[]) => {
       }
       const token = authHeader.split(" ")[1];
       const user: TokenDecodedToken = <TokenDecodedToken>verifyToken(token);
-      if (requiredRoles && requiredRoles?.includes(user?.role)) {
+      if (requiredRoles && !requiredRoles?.includes(user?.role)) {
         return res.status(403).json({ message: "You don't have permissions." });
       }
       Object.assign(req, { user });
