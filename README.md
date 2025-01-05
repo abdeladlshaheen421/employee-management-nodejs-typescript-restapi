@@ -20,8 +20,6 @@
 
 ### `grant all privileges on databaseName.* to 'userName'@'host';`
 
-- Note : the migration will automatically migrate after running server
-
 ---
 
 ## Installation
@@ -33,16 +31,26 @@
 2- create `.env` file like .env-example
 FRONTEND_URL should be like http://localhost:3000 to enable cors origin for frontend
 
-3- to build the project
+3- Note no registration in frontend so use postman to create user with endpoint:
+
+#### `${HOST}:PORT/auth/register` with data like:
+
+`{ "username" : "abdeladl","password":"Abdeladl@123", "role":"ADMIN"}`
+or
+`{ "username" : "abdeladlUser","password":"Abdeladl@123", "role":"USER"}`
+
+### run migration `npm run migrate:up`
+
+4- to build the project
 
 ### `npm run build`
 
-4- to test the project
+5- to test the project
 
 ### `npm run test`
 
-5- to run the project
+6- to run the project
 
 ### `npm start` or `npm run start` or `npm run dev` in development
 
-6- to see swagger api documentation: hit the route `${HOST}:PORT/api-documentation/`
+7- to see swagger api documentation: hit the route `${HOST}:PORT/api-documentation/`
