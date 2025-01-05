@@ -60,7 +60,11 @@ const EmployeeRouter = (app: Application) => {
    *                    employees:
    *                        type: array
    */
-  app.get("/employees", authMiddleware([roleTypeEnum.ADMIN]), findAll);
+  app.get(
+    "/employees",
+    authMiddleware([roleTypeEnum.ADMIN, roleTypeEnum.USER]),
+    findAll
+  );
 
   /**
    * @swagger
@@ -200,7 +204,11 @@ const EmployeeRouter = (app: Application) => {
    *       200:
    *         description:  dashboard data
    */
-  app.get("/dashboard", authMiddleware([roleTypeEnum.ADMIN]), getDashboard);
+  app.get(
+    "/dashboard",
+    authMiddleware([roleTypeEnum.ADMIN, roleTypeEnum.USER]),
+    getDashboard
+  );
 };
 
 export default EmployeeRouter;

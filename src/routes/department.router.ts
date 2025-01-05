@@ -57,7 +57,11 @@ const DepartmentRouter = (app: Application) => {
    *                 departments:
    *                   type: array
    */
-  app.get("/departments", authMiddleware([roleTypeEnum.ADMIN]), findAll);
+  app.get(
+    "/departments",
+    authMiddleware([roleTypeEnum.ADMIN, roleTypeEnum.USER]),
+    findAll
+  );
 
   /**
    * @swagger
